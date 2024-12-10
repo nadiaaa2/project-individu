@@ -1,0 +1,102 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #d1e9fc;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(214, 198, 198, 0.1);
+  font-family: "Arial", sans-serif;
+}
+
+/* Judul utama */
+.title {
+  text-align: center;
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Input dan tombol */
+.inputContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.inputField {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.inputField:focus {
+  border-color: #4caf50;
+}
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+/* Tabel daftar produk */
+.table {
+  width: 100%;
+  border: 1px solid #000000;
+  border-collapse: collapse;
+  margin-top: 10px;
+  color: rgb(62, 60, 60);
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #b0aaaa;
+}
+
+.table th {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #ddd;
+  transition: background-color 0.3s ease;
+}
+
+/* Total Harga */
+.totalPrice {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 17px;
+  font-weight: bold;
+  color: #333;
+}
+
+.text {
+  color: #504f4f;
+  font-size: 14px;
+}
+
+
