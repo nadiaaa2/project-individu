@@ -1,28 +1,13 @@
-"use client";
+"use client"; 
 import { useState } from "react";
 import styles from "./page.module.css";
 
 export default function Home() {
-  const saveDataToLocalStorage = (products, totalPrice) => {
-    localStorage.setItem("products", JSON.stringify(products));
-    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
-  };
-
-  const loadDataFromLocalStorage = () => {
-    const storedProducts = localStorage.getItem("products");
-    const storedTotalPrice = localStorage.getItem("totalPrice");
-    return {
-      products: storedProducts ? JSON.parse(storedProducts) : [],
-      totalPrice: storedTotalPrice ? JSON.parse(storedTotalPrice) : 0,
-    };
-  };
-
-  const { products: initialProducts, totalPrice: initialTotalPrice } = loadDataFromLocalStorage();
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState([]);
   const [productName, setProductName] = useState("");
   const [originalPrice, setOriginalPrice] = useState("");
   const [discount, setDiscount] = useState("");
-  const [totalPrice, setTotalPrice] = useState(initialTotalPrice);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const addProduct = () => {
     if (!productName || isNaN(originalPrice) || isNaN(discount)) {
@@ -39,14 +24,8 @@ export default function Home() {
       hargaAkhir: hargaAkhir,
     };
 
-    const updatedProducts = [...products, newProduct];
-    const updatedTotalPrice = totalPrice + hargaAkhir;
-
-    setProducts(updatedProducts);
-    setTotalPrice(updatedTotalPrice);
-
-    saveDataToLocalStorage(updatedProducts, updatedTotalPrice);
-
+    setProducts([...products, newProduct]);
+    setTotalPrice(totalPrice + hargaAkhir);
     setProductName("");
     setOriginalPrice("");
     setDiscount("");
@@ -58,13 +37,6 @@ export default function Home() {
       return hargaAwal;
     }
     return hargaAwal - (hargaAwal * (diskon / 100));
-  };
-
-  const clearAllData = () => {
-    setProducts([]);
-    setTotalPrice(0);
-    localStorage.removeItem("products");
-    localStorage.removeItem("totalPrice");
   };
 
   return (
@@ -123,9 +95,6 @@ export default function Home() {
             </tbody>
           </table>
           <div className={styles.totalPrice}>Total Harga Keseluruhan: Rp {totalPrice}</div>
-          <button className={styles.button} onClick={clearAllData}>
-            Hapus Semua Data
-          </button>
         </>
       ) : (
         <p className={styles.text}>Belum ada produk yang ditambahkan.</p>
